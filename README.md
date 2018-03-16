@@ -32,3 +32,6 @@ nltk.download('punkt')
 ```
 - BeautifulSoup4 : pip3 install BeautifulSoup4
 - datefinder : pip3 install datefinder
+
+### how to start web demo in local
+python3 manage.py runserver (brief demo for making iphone application)
