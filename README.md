@@ -11,6 +11,7 @@
 ### requirements
 - python3
 - pip3
+- mariaDB
 
 ### prerequisites (python3 modules)
 - django
@@ -22,9 +23,9 @@
 ### how to install python3 modules
 - django : pip3 install django
 - networkx : pip3 install networkx
-- nltk 1. : pip3 install nltk
-- nltk 2.
+- nltk installation is done as followed
 ```python3
+pip3 install nltk (in terminal)
 import nltk
 nltk.download('averaged_perceptron_tagger')
 nltk.download('punkt')
