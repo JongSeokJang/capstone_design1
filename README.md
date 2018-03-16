@@ -1,4 +1,4 @@
-# Capstone desing Project
+# Capstone design Project
 
 ## Members ...
 - 장종석
