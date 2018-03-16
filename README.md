@@ -34,4 +34,7 @@ nltk.download('punkt')
 - datefinder : pip3 install datefinder
 
 ### how to start web demo in local
-python3 manage.py runserver (brief demo for making iphone application)
+brief demo for making iphone application
+```
+python3 manage.py runserver
+```
