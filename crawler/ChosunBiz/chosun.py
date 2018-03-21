@@ -107,7 +107,7 @@ def crawl(url):
 
 
 if __name__ == '__main__':
-    conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r', db='newsData', charset='utf8')
+    conn = pymysql.connect(host='localhost', user='root', password='', db='newsData', charset='utf8')
     curs = conn.cursor()
     while True:
         searchUrl = 'http://news.chosun.com/svc/list_in/list.html?pn='
