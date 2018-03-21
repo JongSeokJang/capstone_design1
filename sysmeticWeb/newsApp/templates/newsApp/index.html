@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> 캡스톤디자인1 크롤러 DB 조회 </title>
+    <title> 캡스톤 디자인 웹 데모 </title>
     <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <meta name="keywords", content="DB 검색">
     <meta name="description", content="뉴스 크롤러 DB검색">
@@ -16,54 +19,113 @@
   <body>
     <div class="field">
       <center>
-        <h1>캡스톤 디자인</h1>
+        <h4>캡스톤 디자인 웹 데모</h4>
+        <br>
+        <h4>팀원 : 장종석 이상협 유승재 </h4>
       </center>
     </div>
+    <div class="ui container">
+      {%for count in counts%}
+      <span>{{count.mediaName}} : {{count.count}}&nbsp|</span>
+      {%endfor%}
+    </div>
+
     <div class="ui container">
       <form action="/index" method="GET" class="ui form">
         <div class="field">
           <div class="field">
-            <label> 검색어 </label>
-            <input type="text" name="query">
+            <label> <font size="4">검색어 </font></label>
+            <input style="font-size:15px;", type="text" name="query">
           </div>
 
           <div class="field">
-            <button type="submit" class="ui button">검색</button>
+            <button type="submit" class="ui button"><font size="2">검색</font></button>
+            &nbsp &nbsp
+            <font size="3"><b>   {{searchQuery}} </b></font>
+            <br>
           </div>
         </div>
-      <div class="ui grid">
-        <div class="row">
+        <div class="ui grid">
           <div class="column">
-            <div class="ui stackable cards one", id="card-content">
+            <div class="ui stackable cards three", id="card-content">
               {%for row in rows%}
               <div class="ui fluid card">
-                <div class="content">
-                  <div class="header">{{row.title}}</div>
+                <div class="content" id="enters">
+                  <div class="header"> <font size="4">{{row.title}}</font></div>
                   <div class="meta">
-                    <span class="publisher">{{row.mediaName}}|</span>
-                    <span class="date">{{row.publishDate}}</span>
-                    <span class="author">{{row.author}}</span>
-                    <p class="text-orange">#{{row.keyword1}} #{{row.keyword2}} #{{row.keyword3}} </p>
-                  </div>
+                    <font size="2">
+                      <span class="publisher">{{row.mediaName}}|</span>
+                      <span class="date">{{row.publishDate}}</span>
+                      <span class="author">{{row.author}}</span>
+                      <p class="text-orange"><font color="#3C60B5">AI 분류 : {{row.category}} &nbsp &nbsp</font><font color="orange">#{{row.keyword1}} #{{row.keyword2}} #{{row.keyword3}} </font></p>
+                    </div>
+                    <br>
 
-                  <div class="description">{{row.summarized}}</div>
+                    <div class="description">{{row.summarized}}</div>
+                  </font>
+                </div>
+                <div class="extra content">
+                  <a class="ui button mini compact" target="_blank" href="{{row.url}}"><font size="2">더보기</font></a>
+                  <button type="button" class="ui button mini compact" data-toggle="modal" data-target="#{{row.id}}"><font size="2">이미지 보기</font></button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="{{row.id}}" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <center>
+                            <h4 class="modal-title">{{row.title}}</h4>
+                          </center>
+                        </div>
+                        <div class="modal-body">
+                          <center>
+                            <p><img style="max-width:400px; height:auto;", src="{{row.img}}"></p>
+                          </center>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="right floated"><font size="2">{{row.isSum}} </font></div>
                 </div>
               </div>
               {%endfor%}
 
             </div>
           </div>
+
         </div>
+        <br>
+        <br>
+        <div align="center">
+          <form action="/index" method="GET">
+            <input type="hidden" name="userQuery" value="{{userQuery}}"/>
+            <input type="hidden" name="mariaId" value="{{mariaId}}"/>
+            <button class="ui primary button" type="submit" align="middle"><font size="4">더 보기</font></button>
+            <p>
+              <p>
+              </p>
+            </p>
+          </form>
+          </div>
+        <br>
+        <br>
+        <br>
+
+
       </div>
-
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 
 
 
-  </body>
+    </body>
 
 
 
-</html>
+  </html>

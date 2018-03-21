@@ -7,6 +7,9 @@ from textrank import TextRank
 import pymysql
 import time
 from preprocess import preprocess
+import sys
+sys.path.append('../')
+from cnn_run import predict_unseen_data
 
 def preTreatment(content):
     content = content.replace('▲  금융위원회 제공', '')
@@ -70,6 +73,9 @@ def crawl(url):
         contentRes = soup.find(id='article_2011')
         content = contentRes.get_text()
         content = preprocess(content)
+        contentList = [content]
+        result = predict_unseen_data(contentList, 'trained_model_14')
+        category = result[0]
         '''
         Step 6: Get summarized and keywords
         return summarized, keyword1, keyword2, keyword3
@@ -78,7 +84,9 @@ def crawl(url):
         tr = TextRank(window=5, coef=1.0, content=content)
         tr.sentence_rank()
         tr.keyword_rank()
-
+        
+        isSum = "요약됨"
+        
         summarized = ""
         i = 0
         for sentence in tr.sentences(ratio=0.4):
@@ -88,6 +96,7 @@ def crawl(url):
                 summarized = summarized + " " + sentence[0]
             i += 1
         if summarized == '':
+            isSum = ''
             summarized = content
         i = 0
         for keyword in tr.keywords(num=3):
@@ -100,9 +109,9 @@ def crawl(url):
             if i == 2:
                 keyword3 = keyword[0]
             i+=1
-        mediaName = "조선일보"
-        sql = "INSERT INTO `mediaNews` (`url`, `img`, `mediaName`, `title`, `summarized`, `content`, `author`, `publishDate`, `keyword1`, `keyword2`, `keyword3`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        curs.execute(sql, (url, img, mediaName, title, summarized, content, authorName, published_at, keyword1, keyword2, keyword3))
+        mediaName = "조선비즈"
+        sql = "INSERT INTO `mediaNews` (`url`, `isSum`, `category`,`img`, `mediaName`, `title`, `summarized`, `content`, `author`, `publishDate`, `keyword1`, `keyword2`, `keyword3`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        curs.execute(sql, (url, isSum, category, img, mediaName, title, summarized, content, authorName, published_at, keyword1, keyword2, keyword3))
         conn.commit()
         
 
@@ -115,7 +124,7 @@ if __name__ == '__main__':
 
         mainUrl = 'http://biz.chosun.com'
         
-        conn = pymysql.connect(host='localhost', user='root', password='', db='newsData', charset='utf8')
+        conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r', db='newsData', charset='utf8')
         curs = conn.cursor()
         for i in range(1, 20):
             forsearch = searchUrl + str(i)

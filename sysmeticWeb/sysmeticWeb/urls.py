@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from newsApp import views
-
+from deeplearning import views2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
+    path('deeplearning/', views2.deep, name='deep'),
+    path('deeplearningresult', views2.result, name='result'),
 ]

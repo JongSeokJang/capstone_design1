@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 시스메틱 Deep Learning 엔진 </title>
+    <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="keywords", content="DB 검색">
+    <meta name="description", content="뉴스 크롤러 DB검색">
+    <meta name="Author", content="유승재">
+    <meta name="viewport", content="width=device-width, user-scalable=no">
+    <script type="text/javascript" async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-65985931-3"></script>
+  </head>
+
+  <body>
+    <div class="field">
+      <center>
+        <h2 style = "margin-top: 20px;">시스메틱 딥 러닝 분류기 엔진 DEMO</h2>
+        <h3> 
+          뉴스를 복사 + 붙여넣기 후 분류하기 버튼을 눌러주세요
+        </h3>
+      </center>
+      <br>
+    </div>
+    <div class="ui container">
+      <form action="/deeplearningresult" method="POST" class="ui form">
+        {% csrf_token %}
+        <textarea name="content", rows="10", placeholder="분류할 뉴스를 복사 붙여넣기 해주세요"> </textarea>
+        <button type="submit" class="ui button" style="margin-top: 20px;">
+          분류하기
+        </button>
+
+      </form>
+      <div class="field">
+        <center>
+          <h3>분류 항목</h3>
+          <h4 font-size='30px'>
+            정치, 경제, 금융, 부동산, 교육, 사회, 취업, 음식, 건강, 문화, 생활, 자동차, 패션/뷰티, 여행, 종교, 세계, e스포츠/게임, IT/인터넷/통신, 모바일, 스포츠, 엔터테인먼트, 영화/뮤직, 컴퓨터
+            <br>
+          </h4>
+          <p>
+            <h1>
+              {{result}}
+            </p>
+            <center>
+            </div>
+            <div class="column">
+              <div class="ui stackable cards one", id="card-content">
+                <div class ="ui fluid card">
+                  <div class="content">
+                    <div class="header"> {{mystring}}
+                    </div>
+                    <div class="description">
+                      {{content}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+
+
+
+          </body>
+
+
+
+        </html>

@@ -25,7 +25,7 @@ SECRET_KEY = '3gwn*z8qro23#z#ay0ly-6sp$z=78i+zn0mz11ta(bml2laezw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.125.229.40', 'localhost']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'newsApp',
+    'deeplearning',
 ]
 
 MIDDLEWARE = [
