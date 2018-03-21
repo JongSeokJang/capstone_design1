@@ -35,8 +35,16 @@ nltk.download('punkt')
 
 ### how to start web demo in local
 brief demo for making iphone application
+- IN LOCAL
 ```
 python3 manage.py runserver
+```
+
+- IN WEB
+Fix ALLOWED_HOSTS in settings.py location :capstone_design1/sysmeticWeb/sysmeticWeb/
+```
+example
+ALLOWED_HOSTS = ['13.125.229.40', 'localhost']
 ```
 
 # CRITICAL
