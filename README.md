@@ -44,6 +44,24 @@ It is critical to fix password to corresponding password in server or local etc.
 Fix passwords in crawler files and views
 
 ### crawler password src location example
-- capstone_design1/crawler/ChosunBiz/chosun.py
+- capstone_design1/crawler/donga/donga.py
+```
+if __name__ == '__main__':
+    searchUrl = "http://news.donga.com/List?p=2"
+    conn = pymysql.connect(host='localhost', user='root', password='', db='newsData', charset='utf8')
+    curs = conn.cursor()
+
+```
 ### views password src location
 - capstone_design1/sysmeticWeb/newsApp/views.py
+```
+def index(request):
+    query = request.GET.get('query')
+    userQuery = request.GET.get('userQuery')
+    mariaId = request.GET.get('mariaId')
+    if query and userQuery == "":
+        conn = pymysql.connect(host='localhost', user='root', password='', db='newsData', charset='utf8')
+        curs = conn.cursor(pymysql.cursors.DictCursor)
+        sql = "SELECT * from mediaNews WHERE content LIKE " + "'%"+query+"%'"+" ORDER BY id DESC limit 9"
+
+```
