@@ -38,3 +38,12 @@ brief demo for making iphone application
 ```
 python3 manage.py runserver
 ```
+
+# CRITICAL
+It is critical to fix password to corresponding password in server or local etc..
+Fix passwords in crawler files and views
+
+### crawler password src location example
+- capstone_design1/crawler/ChosunBiz/chosun.py
+### views password src location
+- capstone_design1/sysmeticWeb/newsApp/views.py
