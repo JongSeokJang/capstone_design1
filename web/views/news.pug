@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title MOYA 뉴스 검색
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, user-scalable=no")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    script(type="text/javascript" src="https://www.google-analytics.com/analytics.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+
+  body(cz-shortcut-listen="true")
+    div.ui.container
+      form.ui.form(action="/news" method="GET")
+        div.field
+          label
+            font(size="4") 검색어
+          input(style="font-size:15px;" name="query" type="text")
+        .field
+          button.ui.button(type="submit")
+            font(size="4") 검색
+        br
+
+      .ui.grid
+        div.column
+          div#card-content.ui.stackable.cards.three
+            
+            - if(rows){
+            - for(var i =0; i<rows.length;i++){
+              .ui.fluid.card
+                .content
+                  .header
+                    font(size="4") #{rows[i].title}
+                  .meta
+                    font(size="2")
+                      span.publisher #{rows[i].mediaName}
+                      span.date #{rows[i].publishDate}
+                      span.author #{rows[i].author}
+                    p.text-orange
+                      font(color="#3C60B5") AI 분류 : #{rows[i].category}
+                      font(color="orange") ##{rows[i].keyword1} ##{rows[i].keyword2} ##{rows[i].keyword3}
+                  font(size="2")
+                    br
+                    div.description #{rows[i].summarized}
+                  div.extra-content
+                    br
+                    a.ui.button.mini.compact(href= rows[i].url)
+                      font(size="3") 더 보기
+            -}
+            -}
+
+      br
+      div(align="center")
+        form.ui.form(action="/news" method="GET")
+          input(type="hidden" name="query" value= querys)
+          input(type="hidden" name="mid" value= mid)
+          button.ui.primary.button(type="submit" align="middle") 
+            font(size="4") 더 보기
+      br
+            

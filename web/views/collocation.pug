@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title 시스메틱 연관 단어 추출 데모 v0.1
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, user-scalable=no")
+        script(type="text/javascript" src="https://www.google-analytics.com/analytics.js")
+
+    // body start
+    body(cz-shortcut-listen="true")
+        div.ui.container
+            h2(style="margin-top: 20px;") 시스메틱 유의어 추출 데모 v0.1
+            h4 단어들을 n차원의 공간에 벡터화 한 후 유의어를 뽑는 방식 !!하나의 단어만 입력해 주세요.!!
+            h3 학습 데이터 (뉴스 데이터 약 2만건)
+            br
+
+        div.ui.container
+            form.ui.form(action="/getWords" method="GET")
+                input(type="text" placeholder="단어를 입력해 주세요." name="word")
+                button.ui.button(type="submit" style="margin-top: 20px;") 유어 추출
+                br
+        
+
+        div.field
+            div.ui.container
+                br
+                - if(words) {
+                    - for(var i = 0; ; i++) {
+                        - if(!words[i]){
+                            - break
+                        - }
+                        h3 #{i+1} : #{words[i][0]} &nbsp &nbsp ( 벡터 유사율 : #{words[i][1]} )
+                    -}
+                -}
