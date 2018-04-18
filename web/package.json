@@ -1,0 +1,20 @@
+{
+  "name": "moya_engine_demo",
+  "version": "1.0.0",
+  "description": "engine demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yoo Seung Jae",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "child_process": "^1.0.2",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "pug": "^2.0.3"
+  }
+}
