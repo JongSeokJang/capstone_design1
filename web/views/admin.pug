@@ -1,0 +1,39 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+        link(href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css")
+        link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css")
+        link(href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet")
+        link(href="css/stylish-portfolio.min.css" rel="stylesheet")
+
+
+    body(cz-short-listen="short")
+        table.table
+            thead.thead-dark
+                tr
+                    th(scope="col") #
+                    th(scope="col") 언론사
+                    th(scope="col") 크롤링 수
+            tbody
+                - if(rows){
+                - for(var i = 0; i<rows.length; i++){
+                tr
+                    th(scope="col") #{i+1}
+                    td #{rows[i].mediaName}
+                    td #{rows[i].count}
+                -}
+                -}
+
+
+        script(src="vendor/jquery/jquery.min.js")
+        script(src="vendor/bootstrap/js/bootstrap.bundle.min.js")
+        script(src="vendor/jquery-easing/jquery.easing.min.js")
+        script(src="js/stylish-portfolio.min.js")
+                    
+
+
+
+        

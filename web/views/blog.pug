@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title MOYA 블로그 검색
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, user-scalable=no")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    script(type="text/javascript" src="https://www.google-analytics.com/analytics.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    
+
+  body(cz-shortcut-listen="true")
+    div.ui.container
+      form.ui.form(action="/news" method="GET")
+        div.field
+          label 검색어
+          input(style="font-size:15px;" name="query" type="text")
+        .field
+          button.ui.button(type="submit") 검색
+        br
+
+      .ui.grid
+        div.column
+          div#card-content.ui.stackable.cards.three(id="content")
+            

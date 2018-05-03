@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        title 시스메틱 키워드 추출 엔진 데모
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, user-scalable=no")
+        script(type="text/javascript" src="https://www.google-analytics.com/analytics.js")
+
+    // body start
+    body(cz-shortcut-listen="true")
+        div.ui.container
+            h2(style="margin-top: 20px;") 시스메틱 키워드 추출 엔진 데모
+            h4 불용어 처리가 안되어 있는 순수 키워드 추출 엔진입니다. (불용어 처리 시 성능 올라감)
+            h4 PMI(Point-wise Mutual Information)는 통계에 기초한 방법으로 두 확률 변수의 특정한 값의 연관성을 표현하는 지표로 의미 극성이 비슷한 단어들은 같은 문서 안에 나타날 확률이 높다고 할 때, PMI를 통해 두 단어 간의 연관성을 찾을 수 있다.
+            br
+
+        div.ui.container
+            form.ui.form(action="/keyword" method="POST")
+                textarea(name="content" rows="10" placeholder="키워드 추출할 글을 복사 붙여넣기 해주세요")
+                button.ui.button(type="submit" style="margin-top: 20px;") 키워드 추출
+                br
+        
+
+        div.field
+            div.ui.container
+                br
+                h4 문서가 짧을 시 키워드 추출이 안될 수 있습니다.
+                br
+                - if(keywords) {
+                    - for(var i = 0; i< keywords.length; i++) {
+                        - if(!keywords[i]){
+                            - break
+                        - }
+                        div.item
+                          h3 #{i+1} : #{keywords[i][0]} &nbsp &nbsp ( PMI : #{keywords[i][1]} )
+                    -}
+                -}
+

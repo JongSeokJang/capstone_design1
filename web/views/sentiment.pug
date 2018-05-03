@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title SYSMETIC 긍부정 판별 엔진
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, user-scalable=no")
+        script(type="text/javascript" src="https://www.google-analytics.com/analytics.js")
+
+    // body start
+    body(cz-shortcut-listen="true")
+        div.ui.container
+            h2(style="margin-top: 20px;") SYSMETIC 긍부정 판별 엔진
+            h4 극성탐지를 이용한 긍부정 판별 엔진
+            br
+
+        div.ui.container
+            form.ui.form(action="/sentiment" method="POST")
+                textarea(name="content" rows="10" placeholder="뉴스를 입력해주세요.")
+                button.ui.button(type="submit" style="margin-top: 20px;") 분석
+                br
+        
+
+        div.field
+            div.ui.container
+                br
+                h4 긍부정 강도는 -100부터 100까지 나옵니다.
+                br
+                - if(posNeg){
+                    h2= posNeg
+                -}
+                - if(polarity) {
+                    h3 News Polarity : #{polarity}
+                -}
+
