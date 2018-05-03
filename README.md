@@ -1,5 +1,8 @@
 # Capstone design Project
 
+## WEB DEMO
+http://moya.ai/news
+
 ## Members ...
 - 장종석
 - 이상협
