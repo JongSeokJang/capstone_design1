@@ -56,12 +56,10 @@ def crawl(url):
             if i == 2:
                 keyword3 = keyword[0]
             i+=1
-        conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r', db='newsData', charset='utf8')
-        curs = conn.cursor()
         sql = "INSERT INTO `newsData` (`uri`, `mediaName`, `title`, `summarized`, `content`, `author`, `publishDate`, `keyword1`, `keyword2`, `keyword3`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         curs.execute(sql, (url, mediaName, title, summarized, content, author, publishDate, keyword1, keyword2, keyword3))
-        conn.commit()
-        conn.close()
+        #conn.commit()
+        #conn.close()
 
 
     except Exception as e:
@@ -69,6 +67,8 @@ def crawl(url):
 
 
 if __name__ == '__main__':
+    conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r', db='newsData', charset='utf8', autocommit=True)
+    curs = conn.cursor()
     while True:
         searchUrl = "http://news.kmib.co.kr/article/list.asp?sid1=spo"
         mainUrl = "http://news.kmib.co.kr/article/"
