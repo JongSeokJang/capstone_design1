@@ -12,7 +12,7 @@
 		97E15CB020AD8D6F00C9D87E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E15CAE20AD8D6F00C9D87E /* Main.storyboard */; };
 		97E15CB220AD8D7600C9D87E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97E15CB120AD8D7600C9D87E /* Assets.xcassets */; };
 		97E15CB520AD8D7600C9D87E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97E15CB320AD8D7600C9D87E /* LaunchScreen.storyboard */; };
-		C27624EE20B5135C008CB774 /* marshabitatpricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C27624ED20B5135C008CB774 /* marshabitatpricer.mlmodel */; };
+		C257819B20B5126A00063E9E /* marshabitatpricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C257819A20B5126A00063E9E /* marshabitatpricer.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		97E15CB120AD8D7600C9D87E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97E15CB420AD8D7600C9D87E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97E15CB620AD8D7600C9D87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C27624ED20B5135C008CB774 /* marshabitatpricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = marshabitatpricer.mlmodel; sourceTree = "<group>"; };
+		C257819A20B5126A00063E9E /* marshabitatpricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = marshabitatpricer.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +58,8 @@
 			children = (
 				97E15CAA20AD8D6F00C9D87E /* AppDelegate.swift */,
 				97E15CAC20AD8D6F00C9D87E /* ViewController.swift */,
+				C257819A20B5126A00063E9E /* marshabitatpricer.mlmodel */,
 				97E15CAE20AD8D6F00C9D87E /* Main.storyboard */,
-				C27624ED20B5135C008CB774 /* marshabitatpricer.mlmodel */,
 				97E15CB120AD8D7600C9D87E /* Assets.xcassets */,
 				97E15CB320AD8D7600C9D87E /* LaunchScreen.storyboard */,
 				97E15CB620AD8D7600C9D87E /* Info.plist */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C27624EE20B5135C008CB774 /* marshabitatpricer.mlmodel in Sources */,
+				C257819B20B5126A00063E9E /* marshabitatpricer.mlmodel in Sources */,
 				97E15CAD20AD8D6F00C9D87E /* ViewController.swift in Sources */,
 				97E15CAB20AD8D6F00C9D87E /* AppDelegate.swift in Sources */,
 			);
