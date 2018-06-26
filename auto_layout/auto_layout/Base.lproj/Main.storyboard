@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="auto_layout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocr-Wk-CFl" customClass="blue">
+                                <rect key="frame" x="0.0" y="120" width="150" height="428"/>
+                                <color key="backgroundColor" red="0.062447297989999997" green="0.26350337509999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.062447297989999997" green="0.26350337509999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IB8-Ta-bg0" customClass="red">
+                                <rect key="frame" x="158" y="120" width="162" height="428"/>
+                                <color key="backgroundColor" red="1" green="0.2111613983" blue="0.038788559049999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgN-id-IaU">
+                                <rect key="frame" x="126" y="29.5" width="68" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Blue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0s-2Y-7T9">
+                                <rect key="frame" x="350" y="80" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ocr-Wk-CFl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="5PM-oH-8wk"/>
+                            <constraint firstItem="ocr-Wk-CFl" firstAttribute="width" secondItem="IB8-Ta-bg0" secondAttribute="width" multiplier="0.5" priority="750" id="D1Y-xT-cgq"/>
+                            <constraint firstItem="IB8-Ta-bg0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DjR-3U-qVK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ocr-Wk-CFl" secondAttribute="bottom" constant="20" id="VGx-b5-1yi"/>
+                            <constraint firstItem="IB8-Ta-bg0" firstAttribute="leading" secondItem="ocr-Wk-CFl" secondAttribute="trailing" constant="8" id="WC4-SW-lOy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IB8-Ta-bg0" secondAttribute="bottom" constant="20" id="bXk-fv-vjr"/>
+                            <constraint firstItem="ocr-Wk-CFl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bxh-4y-5La"/>
+                            <constraint firstItem="S0s-2Y-7T9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ezg-Kn-yJB"/>
+                            <constraint firstItem="ocr-Wk-CFl" firstAttribute="width" relation="greaterThanOrEqual" secondItem="IB8-Ta-bg0" secondAttribute="width" multiplier="1:100000" constant="150" id="h21-B5-IkP"/>
+                            <constraint firstItem="IB8-Ta-bg0" firstAttribute="top" secondItem="sgN-id-IaU" secondAttribute="bottom" constant="70" id="oxY-yi-Gum">
+                                <variation key="heightClass=compact" constant="30"/>
+                            </constraint>
+                            <constraint firstItem="sgN-id-IaU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pqd-DI-slj"/>
+                            <constraint firstItem="IB8-Ta-bg0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="qrQ-9K-cxD"/>
+                            <constraint firstItem="S0s-2Y-7T9" firstAttribute="top" secondItem="sgN-id-IaU" secondAttribute="bottom" constant="8" id="x47-yi-yDd">
+                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
+                            </constraint>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="S0s-2Y-7T9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ezg-Kn-yJB"/>
+                                <exclude reference="x47-yi-yDd"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="S0s-2Y-7T9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ezg-Kn-yJB"/>
+                                <include reference="x47-yi-yDd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.71875" y="133.0078125"/>
+        </scene>
+    </scenes>
+</document>
