@@ -32,12 +32,13 @@ def crawl(url):
         name = r"[^ ]*[ ]?기자[ ]?"
         nameSearch = re.compile(name)
         authorRes = soup.find(id='j1')
+        authorName = ''
         try:
             author = authorRes.get_text()
             authorNames = nameSearch.findall(author)
-            for authorName in authorNames:
-                if authorName:
-                    authorName = authorName.replace('\r\n\t\t\t\t', '')
+            for _authorName in authorNames:
+                if _authorName:
+                    authorName = _authorName.replace('\r\n\t\t\t\t', '')
                     authorName = authorName.replace('\n', '')
                     authorName = authorName.replace('\t', '')
                     break
@@ -63,42 +64,59 @@ def crawl(url):
         category = result[0]
 
 
-        tr = TextRank(window=5, coef=1.0, content=content)
+        tr = TextRank(coef=1.0, window=5, content=content)
         tr.sentence_rank()
         tr.keyword_rank()
-        
-        isSum = "요약됨"
+        keywords = tr.keywords(num=3)
+        keyword1 = ''
+        keyword2 = ''
+        keyword3 = ''
 
-        summarized = ""
-        i = 0
-        for sentence in tr.sentences(ratio=0.4):
-            if i == 3:
-                break
-            if "▲" not in sentence:
-                summarized = summarized + " " + sentence[0]
-            i += 1
-        if summarized == '':
-            isSum = ''
-            summarized = content
-        i = 0
-        for keyword in tr.keywords(num=3):
-            if i == 3:
-                break
-            if i == 0:
-                keyword1 = keyword[0]
-            if i == 1:
-                keyword2 = keyword[0]
-            if i == 2:
-                keyword3 = keyword[0]
-            i += 1
+        if len(keywords) > 0:
+            keyword1 = keywords[0][0]
+        if len(keywords) > 1:
+            keyword2 = keywords[1][0]
+        if len(keywords) > 2:
+            keyword3 = keywords[2][0]
+
+
+
+        trSentence = tr.sentences(ratio=0.4)
+        if len(trSentence) > 0 and trSentence[0][0]:
+            sentence1 = trSentence[0][0]
+            sentence1 = sentence1.replace('하지만', '')
+            sentence1 = sentence1.replace('그러나', '')
+        else:
+            sentence1 = ""
+        if len(trSentence) > 1 and trSentence[1][0]:
+            sentence2 = trSentence[1][0]
+            sentence2 = sentence2.replace('하지만', '')
+            sentence2 = sentence2.replace('그러나', '')
+        else:
+            sentence2 = ""
+        if len(trSentence) > 2 and trSentence[2][0]:
+            sentence3 = trSentence[2][0]
+            sentence3 = sentence3.replace('하지만', '')
+            sentence3 = sentence3.replace('그러나', '')
+        else:
+            sentence3 = ""
+        if sentence1 == "":
+            summarzied = content
+            isSum = ""
+        else:
+            summarized = sentence1 + " " + sentence2 + " " + sentence3
+            isSum = "요약됨"
         mediaName = "조선일보"
 
         
 
         #push to mariaDB
-        sql = "INSERT INTO `mediaNews` (`url`, `isSum`, `category`, `img`, `mediaName`, `title`, `summarized`, `content`, `author`, `publishDate`, `keyword1`, `keyword2`, `keyword3`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        curs.execute(sql, (url, isSum, category, img, mediaName, title, summarized, content, authorName, published_at, keyword1, keyword2, keyword3))
-        conn.commit()
+        if summarized == "":
+            pass
+        else:
+            sql = "INSERT INTO `mediaNews` (`url`, `isSum`, `category`, `img`, `mediaName`, `title`, `summarized`, `content`, `author`, `publishDate`, `keyword1`, `keyword2`, `keyword3`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            curs.execute(sql, (url, isSum, category, img, mediaName, title, summarized, content, authorName, published_at, keyword1, keyword2, keyword3))
+            #conn.commit()
  
 
     except Exception as e:
@@ -107,7 +125,7 @@ def crawl(url):
 
 
 if __name__ == '__main__':
-    conn = pymysql.connect(host='localhost', user='root', password='', db='newsData', charset='utf8')
+    conn = pymysql.connect(host='localhost', user='root', password='1q2w3e4r', db='newsData', charset='utf8', autocommit=True)
     curs = conn.cursor()
     while True:
         searchUrl = 'http://news.chosun.com/svc/list_in/list.html?pn='
